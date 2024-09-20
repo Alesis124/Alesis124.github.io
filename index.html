@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portafolio - Alejandro</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h1 class="logo"><a href="#top">Alejandro</a></h1>
+            <ul>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Hola, soy <span class="highlight">Alejandro Moreno Lechado</span></h2>
+            <h3>Desarrollador Multiplataforma y Diseñador Web</h3>
+            <p>Me encanta crear aplicaciones y sitios web interactivos, modernos y eficientes.</p>
+            <a href="#contact" class="cta">Ver Contacto</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-image-container">
+                <img src="imagenes/yo.jpeg" alt="Yo" class="about-image">
+            </div>
+            <h2>Sobre Mí</h2>
+            <p>Soy un estudiante de desarrollo de aplicaciones multiplataforma que ha aprendido programación de Java y C#, además de lenguajes de alto nivel web como HTML, CSS y JavaScript.</p><br>
+            <p>Soy una persona original y creativa, por eso a la hora de crear un programa o una página web suelo tener algo más de soltura. Otro de mis rasgos importantes es mi lenguaje, ya que hablo como lengua nativa el Español y como lengua secundaria el Inglés, con un poco de Francés.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Mis Habilidades</h2>
+            <p>A lo largo de mi formación, he adquirido una sólida base en múltiples tecnologías y herramientas tanto de desarrollo multiplataforma como de diseño web. A continuación, algunas de las habilidades más destacadas:</p>
+
+            <div class="skills-list">
+                <div class="skill">
+                    <h3>Java & C#</h3>
+                    <p>Lenguajes orientados a objetos que utilizo para crear aplicaciones robustas y escalables.</p>
+                </div>
+                <div class="skill">
+                    <h3>HTML, CSS & JavaScript</h3>
+                    <p>Conocimiento avanzado en tecnologías web para crear interfaces interactivas y visualmente atractivas.</p>
+                </div>
+                <div class="skill">
+                    <h3>Diseño UI/UX</h3>
+                    <p>Experiencia en diseño centrado en el usuario, creando interfaces intuitivas y agradables.</p>
+                </div>
+                <div class="skill">
+                    <h3>Inglés y Francés</h3>
+                    <p>Capacidad de comunicación fluida en inglés y conocimientos básicos de francés, ideal para colaborar en proyectos internacionales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>¿Tienes un proyecto en mente o simplemente quieres saludar? Contáctame a través de mis redes sociales o envíame un mensaje por email.</p>
+            <a href="mailto:alejandro.moreno.lechado@gmail.com" class="cta">Contáctame</a>
+
+            <div class="social-media">
+                <a href="https://x.com/Alesis_124" target="_blank" class="social-icon1">
+                    <img src="imagenes/x.png" alt="Twitter">
+                </a>
+                <a href="https://www.instagram.com/alesis124/" target="_blank" class="social-icon">
+                    <img src="imagenes/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/alejandro.morenolechado/?locale=es_ES" target="_blank" class="social-icon">
+                    <img src="imagenes/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.reddit.com/user/Alessis_124/" target="_blank" class="social-icon">
+                    <img src="imagenes/reddit.png" alt="Reddit">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Alejandro Moreno Lechado.</p>
+    </footer>
+
+    <script>
+        document.querySelector('.logo a').addEventListener('click', function(e) {
+        e.preventDefault();
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+        document.querySelectorAll('nav ul li a, .cta').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
