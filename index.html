@@ -36,7 +36,7 @@
             <div class="about-image-container">
                 <img src="imagenes/yo.jpeg" alt="Yo" class="about-image">
             </div>
-            <h2>Sobre Mí</h2>
+            <a href="imagenes/Shared profile _ Alejandro Moreno Lechado.pdf"><h2>Sobre Mí</h2></a>
             <p>Soy un estudiante de desarrollo de aplicaciones multiplataforma que ha aprendido programación de Java y C#, además de lenguajes de alto nivel web como HTML, CSS y JavaScript.</p><br>
             <p>Soy una persona original y creativa, por eso a la hora de crear un programa o una página web suelo tener algo más de soltura. Otro de mis rasgos importantes es mi lenguaje, ya que hablo como lengua nativa el Español y como lengua secundaria el Inglés, con un poco de Francés.</p>
         </div>
@@ -120,6 +120,18 @@
                 }
             });
         });
+        function mostrarBandera() {
+            const pais = document.getElementById("pais").value;
+            const banderaElement = document.getElementById("bandera");
+
+            if (pais === "UK") {
+                banderaElement.innerHTML = "Bandera de Reino Unido: 🇬🇧";
+            } else if (pais === "FR") {
+                banderaElement.innerHTML = "Bandera de Francia: 🇫🇷";
+            } else {
+                banderaElement.innerHTML = "";
+            }
+        }
     </script>
 </body>
 </html>
