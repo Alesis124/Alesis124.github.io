@@ -72,7 +72,7 @@
         <div class="container">
             <h2>Contacto</h2>
             <p>¿Tienes un proyecto en mente o simplemente quieres saludar? Contáctame a través de mis redes sociales o envíame un mensaje por email.</p>
-            <a href="https://www.linkedin.com/in/alejandro-moreno-lechado-bb970b341/" target="_blank">Contáctame</a>
+            <a href="https://www.linkedin.com/in/alejandro-moreno-lechado-bb970b341/" class="cta" target="_blank">Contáctame</a>
 
             <div class="social-media">
                 <a href="https://x.com/Alesis_124" target="_blank" class="social-icon1">
@@ -105,21 +105,23 @@
             behavior: 'smooth'
         });
     });
-        document.querySelectorAll('nav ul li a, .cta').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('nav ul li a, .cta').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith("#")) { 
                 e.preventDefault();
-
-                const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop,
                         behavior: 'smooth'
                     });
                 }
-            });
+            }
         });
+    });
+
+
         function mostrarBandera() {
             const pais = document.getElementById("pais").value;
             const banderaElement = document.getElementById("bandera");
