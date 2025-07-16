@@ -160,6 +160,25 @@ nav ul li a:hover {
     color: #FF6347;
 }
 
+
+.lang-btn {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    background: #FF6347;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 1100;
+}
+
+.lang-btn:hover {
+    background: #ff7f6b;
+}
 .cta {
     display: inline-block;
     padding: 10px 20px;

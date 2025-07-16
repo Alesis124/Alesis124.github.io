@@ -20,6 +20,7 @@
                 <li><a href="#contact">Contacto</a></li>
             </ul>
         </nav>
+        <button id="lang-toggle" class="lang-btn">EN</button>
     </header>
 
     <section class="hero">
@@ -36,9 +37,9 @@
             <div class="about-image-container">
                 <img src="imagenes/yo.jpeg" alt="Yo" class="about-image">
             </div>
-            <a href="imagenes/Shared profile _ Alejandro Moreno Lechado.pdf"><h2>Sobre Mí</h2></a>
-            <p>Soy un estudiante de desarrollo de aplicaciones multiplataforma que ha aprendido programación de Java y C#, además de lenguajes de alto nivel web como HTML, CSS y JavaScript.</p><br>
-            <p>Soy una persona original y creativa, por eso a la hora de crear un programa o una página web suelo tener algo más de soltura. Otro de mis rasgos importantes es mi lenguaje, ya que hablo como lengua nativa el Español y como lengua secundaria el Inglés, con un poco de Francés.</p>
+            <h2><a href="imagenes/Shared profile _ Alejandro Moreno Lechado.pdf" id="about-pdf-link">Sobre Mí</a></h2>
+            <p id="about-p1">Soy un estudiante de desarrollo de aplicaciones multiplataforma que ha aprendido programación de Java y C#, además de lenguajes de alto nivel web como HTML, CSS y JavaScript.</p>
+            <p id="about-p2">Soy una persona original y creativa, por eso a la hora de crear un programa o una página web suelo tener algo más de soltura. Otro de mis rasgos importantes es mi lenguaje, ya que hablo como lengua nativa el Español y como lengua secundaria el Inglés, con un poco de Francés.</p>
         </div>
     </section>
 
@@ -123,45 +124,141 @@
         <p>&copy; 2024 Alejandro Moreno Lechado.</p>
     </footer>
 
-    <script>
-        document.querySelector('.logo a').addEventListener('click', function(e) {
-        e.preventDefault();
+<script>
+    function isSpanish() {
+        const lang = navigator.language || navigator.userLanguage;
+        return lang.startsWith('es');
+    }
 
-
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    document.querySelectorAll('nav ul li a, .cta').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId.startsWith("#")) { 
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
-    });
-
-
-        function mostrarBandera() {
-            const pais = document.getElementById("pais").value;
-            const banderaElement = document.getElementById("bandera");
-
-            if (pais === "UK") {
-                banderaElement.innerHTML = "Bandera de Reino Unido: 🇬🇧";
-            } else if (pais === "FR") {
-                banderaElement.innerHTML = "Bandera de Francia: 🇫🇷";
-            } else {
-                banderaElement.innerHTML = "";
-            }
+    const translations = {
+        es: {
+            about: "Sobre mí",
+            aboutTitle: "Sobre Mí",
+            aboutPDF: "Ver perfil PDF",
+            aboutP1: "Soy un estudiante de desarrollo de aplicaciones multiplataforma que ha aprendido programación de Java y C#, además de lenguajes de alto nivel web como HTML, CSS y JavaScript.",
+            aboutP2: "Soy una persona original y creativa, por eso a la hora de crear un programa o una página web suelo tener algo más de soltura. Otro de mis rasgos importantes es mi lenguaje, ya que hablo como lengua nativa el Español y como lengua secundaria el Inglés, con un poco de Francés.",
+            skills: "Habilidades",
+            skillsTitle: "Mis Habilidades",
+            skillsP: "A lo largo de mi formación, he adquirido una sólida base en múltiples tecnologías y herramientas tanto de desarrollo multiplataforma como de diseño web. A continuación, algunas de las habilidades más destacadas:",
+            skill1: "Java & C#",
+            skill1P: "Lenguajes orientados a objetos que utilizo para crear aplicaciones robustas y escalables.",
+            skill2: "HTML, CSS & JavaScript",
+            skill2P: "Conocimiento avanzado en tecnologías web para crear interfaces interactivas y visualmente atractivas.",
+            skill3: "Diseño UI/UX",
+            skill3P: "Experiencia en diseño centrado en el usuario, creando interfaces intuitivas y agradables.",
+            skill4: "Inglés y Francés",
+            skill4P: "Capacidad de comunicación fluida en inglés y conocimientos básicos de francés, ideal para colaborar en proyectos internacionales.",
+            contact: "Contacto",
+            hero: "Hola, soy <span class='highlight'>Alejandro Moreno Lechado</span>",
+            heroSub: "Desarrollador Multiplataforma y Diseñador Web",
+            heroText: "Me encanta crear aplicaciones y sitios web interactivos, modernos y eficientes.",
+            cta: "Ver Contacto",
+            achievements: "Logros y Formación",
+            achievement1: "<strong>Licencia B2 de Inglés:</strong> Certificado oficial de nivel B2.",
+            achievement2: "<strong>Coche propio:</strong> Disponibilidad para desplazamientos.",
+            achievement3: "<strong>Educación:</strong> ESO, Bachillerato, Selectividad y Formación Profesional Superior en Desarrollo de Aplicaciones Multiplataforma.",
+            achievement4: "<strong>Formación actual:</strong> Estudiando para obtener la licencia de Piloto Aplicador de Drones.",
+            contactTitle: "Contacto",
+            contactText: "¿Tienes un proyecto en mente o simplemente quieres saludar? Contáctame a través de mis redes sociales o envíame un mensaje por email.",
+            contactBtn: "Contáctame"
+        },
+        en: {
+            about: "About Me",
+            aboutTitle: "About Me",
+            aboutPDF: "View PDF Profile",
+            aboutP1: "I am a student of multiplatform application development who has learned Java and C# programming, as well as high-level web languages such as HTML, CSS, and JavaScript.",
+            aboutP2: "I am an original and creative person, so when creating a program or website I tend to have a bit more ease. Another important trait is my language skills: I am a native Spanish speaker and speak English as a second language, with some French knowledge.",
+            skills: "Skills",
+            skillsTitle: "My Skills",
+            skillsP: "Throughout my education, I have acquired a solid foundation in multiple technologies and tools for both multiplatform development and web design. Here are some of my most notable skills:",
+            skill1: "Java & C#",
+            skill1P: "Object-oriented languages I use to create robust and scalable applications.",
+            skill2: "HTML, CSS & JavaScript",
+            skill2P: "Advanced knowledge in web technologies to create interactive and visually appealing interfaces.",
+            skill3: "UI/UX Design",
+            skill3P: "Experience in user-centered design, creating intuitive and pleasant interfaces.",
+            skill4: "English & French",
+            skill4P: "Fluent communication in English and basic knowledge of French, ideal for collaborating on international projects.",
+            contact: "Contact",
+            hero: "Hi, I'm <span class='highlight'>Alejandro Moreno Lechado</span>",
+            heroSub: "Multiplatform Developer & Web Designer",
+            heroText: "I love creating interactive, modern, and efficient apps and websites.",
+            cta: "See Contact",
+            achievements: "Achievements & Education",
+            achievement1: "<strong>B2 English License:</strong> Official B2 level certificate.",
+            achievement2: "<strong>Own Car:</strong> Available for travel.",
+            achievement3: "<strong>Education:</strong> ESO, High School, University Entrance Exam, and Higher Vocational Training in Multiplatform Application Development.",
+            achievement4: "<strong>Current Training:</strong> Studying to obtain the Drone Applicator Pilot license.",
+            contactTitle: "Contact",
+            contactText: "Do you have a project in mind or just want to say hi? Contact me via social media or send me an email.",
+            contactBtn: "Contact Me"
         }
-    </script>
+    };
+
+    function setLanguage(lang) {
+    // Nav
+    document.querySelector('nav ul li a[href="#about"]').textContent = translations[lang].about;
+    document.querySelector('nav ul li a[href="#skills"]').textContent = translations[lang].skills;
+    document.querySelector('nav ul li a[href="#contact"]').textContent = translations[lang].contact;
+
+    // Hero
+    document.querySelector('.hero-text h2').innerHTML = translations[lang].hero;
+    document.querySelector('.hero-text h3').textContent = translations[lang].heroSub;
+    document.querySelector('.hero-text p').textContent = translations[lang].heroText;
+    document.querySelector('.cta').textContent = translations[lang].cta;
+
+    // About
+    document.getElementById('about-pdf-link').textContent = translations[lang].aboutPDF;
+    document.getElementById('about-p1').textContent = translations[lang].aboutP1;
+    document.getElementById('about-p2').textContent = translations[lang].aboutP2;
+    document.querySelector('.about-image').alt = lang === 'es' ? 'Yo' : 'Me';
+
+    // Achievements
+    document.querySelector('#achievements h2').textContent = translations[lang].achievements;
+    const achievementLis = document.querySelectorAll('.achievements-list li a');
+    achievementLis[0].innerHTML = translations[lang].achievement1;
+    achievementLis[1].innerHTML = translations[lang].achievement2;
+    achievementLis[2].innerHTML = translations[lang].achievement3;
+    achievementLis[3].innerHTML = translations[lang].achievement4;
+
+    // Skills
+    document.querySelector('#skills h2').textContent = translations[lang].skillsTitle;
+    document.querySelector('#skills p').textContent = translations[lang].skillsP;
+    const skillDivs = document.querySelectorAll('.skills-list .skill');
+    skillDivs[0].querySelector('h3').textContent = translations[lang].skill1;
+    skillDivs[0].querySelector('p').textContent = translations[lang].skill1P;
+    skillDivs[1].querySelector('h3').textContent = translations[lang].skill2;
+    skillDivs[1].querySelector('p').textContent = translations[lang].skill2P;
+    skillDivs[2].querySelector('h3').textContent = translations[lang].skill3;
+    skillDivs[2].querySelector('p').textContent = translations[lang].skill3P;
+    skillDivs[3].querySelector('h3').textContent = translations[lang].skill4;
+    skillDivs[3].querySelector('p').textContent = translations[lang].skill4P;
+
+    // Contact
+    document.querySelector('#contact h2').textContent = translations[lang].contactTitle;
+    document.querySelector('#contact p').textContent = translations[lang].contactText;
+    document.querySelector('#contact .cta').textContent = translations[lang].contactBtn;
+
+    // Social media alt texts
+    document.querySelector('.social-icon1 img').alt = lang === 'es' ? 'Twitter' : 'Twitter';
+    document.querySelectorAll('.social-icon img')[0].alt = lang === 'es' ? 'Instagram' : 'Instagram';
+    document.querySelectorAll('.social-icon img')[1].alt = lang === 'es' ? 'Facebook' : 'Facebook';
+    document.querySelectorAll('.social-icon img')[2].alt = lang === 'es' ? 'Reddit' : 'Reddit';
+
+    // Idioma botón
+    document.getElementById('lang-toggle').textContent = lang === 'es' ? 'EN' : 'ES';
+}
+    let currentLang = isSpanish() ? 'es' : 'en';
+    window.addEventListener('DOMContentLoaded', () => {
+        setLanguage(currentLang);
+    });
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        setLanguage(currentLang);
+    });
+</script>
+
+    
 </body>
 </html>
