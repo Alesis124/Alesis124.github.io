@@ -233,6 +233,45 @@ html {
   scroll-behavior: smooth;
 }
 
+.two-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.column {
+  flex: 1 1 45%;
+}
+
+.achievements-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.achievements-list li {
+  margin-bottom: 1rem;
+}
+
+
+.achievements-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.achievements-list {
+  flex: 1;
+  min-width: 250px;
+  list-style: none;
+  padding: 0;
+}
+
+.achievements-list li {
+  margin-bottom: 1rem;
+  padding: 2rem;
+}
+
+
 
 .projects {
     padding: 60px 20px;
