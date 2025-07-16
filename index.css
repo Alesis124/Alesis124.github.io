@@ -229,6 +229,41 @@ nav ul li a:hover {
     color: #333;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
+.projects {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.projects h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.projects-list {
+    list-style: none;
+    padding-left: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.projects-list li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 1rem;
+    background: #fff;
+    padding: 15px;
+    border-left: 4px solid #6c63ff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+
 .skills p {
     margin-bottom: 40px;
     color: #555;
